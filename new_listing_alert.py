@@ -119,14 +119,18 @@ def send_new_list(events):
 def main():
 
     # 获取近期上币的json
-    new_list = fetch_new_list_all("2023-07-24")
+    logger.info(f"扫描日期：{Check_Date if Check_Date else '当天'}，开始扫描……")
+    new_list = fetch_new_list_all(Check_Date)
+    logger.info(f"共扫描到未来 {len(new_list)} 天的上新事件")
 
     # 获取关注交易所的上币信息，Monitored_Sites
     events = get_monitored_list(new_list)
+    logger.info(f"关注的交易所 上新事件 {len(events)}")
 
     # 发送结果
     if events:
         send_new_list(events)
+        logger.info(f"发送完成")
 
 
 if __name__ == '__main__':
