@@ -12,7 +12,7 @@ from os import path
 LOG_LEVEL_CONSOLE = "debug"
 LOG_LEVEL_FILE = "debug"
 LOG_PATH = ROOT_PATH/"data"/"logs"
-LOG_PATH.mkdir(exist_ok=True)
+LOG_PATH.mkdir(parents=True, exist_ok=True)
 
 # 定义log文件的存储路径和名称
 logPath = LOG_PATH
