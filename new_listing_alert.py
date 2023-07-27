@@ -135,7 +135,7 @@ def get_sent_history_count(event: dict, file_record: Path):
     df_e = load_events_record(file_record)
 
     if df_e is not None:
-        sent_count = df_e["eventcode"].value_counts()[event_name]
+        sent_count = df_e["eventcode"].value_counts().get(event_name, 0)
         return sent_count
     else:
         return 0
