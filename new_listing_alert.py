@@ -144,14 +144,14 @@ def get_sent_history_count(event: dict, file_record: Path):
 def send_new_list(events, file_record: Path):
     """
     将所有关注的上新事件格式化后发送到Mixin，
-    会判断每个事件的已发送次数，如果已经发送过3次，就停止发送
+    会判断每个事件的已发送次数，如果已经发送超过Repeat次数，就停止发送
     :param file_record: 存储事件df的csv文件Path对象
     :param events: get_monitored_list return
     :return:
     """
     msg = ""
     for e in events:
-        if get_sent_history_count(event=e, file_record=file_record) >= 3:
+        if get_sent_history_count(event=e, file_record=file_record) >= Repeat:
             logger.debug(f"该事件已经发送过3次，不再发送")
             continue
         else:
