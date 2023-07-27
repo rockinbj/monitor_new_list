@@ -152,7 +152,7 @@ def send_new_list(events, file_record: Path):
     msg = ""
     for e in events:
         if get_sent_history_count(event=e, file_record=file_record) >= Repeat:
-            logger.debug(f"该事件已经发送过3次，不再发送")
+            logger.debug(f"该事件已经发送过3次，不再发送: {e['eventcode']}")
             continue
         else:
             msg += f'{e["nativename"]}\n'
