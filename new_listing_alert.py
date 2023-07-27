@@ -179,9 +179,9 @@ def main():
     # 获取关注交易所的上币信息，Monitored_Sites
     events = get_monitored_list(new_list)
     logger.info(f"关注的交易所 上新事件 {len(events)}")
-    logger.debug(f"关注的上新事件：{new_list}")
+    logger.debug(f"关注的上新事件：{events}")
 
-    # 发送结果，并且做记录
+    # 发送结果并做记录，如果已经发送过Repeat次数的事件就不再发送
     if events:
         send_new_list(events, file_record)
         logger.info(f"发送完成")
